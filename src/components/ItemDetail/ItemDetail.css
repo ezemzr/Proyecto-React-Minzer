@@ -1,0 +1,131 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    width: 100%;
+    margin: 20px;
+    gap: 20px   ;
+    height: 300px;
+    
+    }
+    
+.primerDiv { 
+    grid-area: 1 / 1 / 6 / 3;
+    background-color: white; 
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+    justify-content: center;
+    
+}
+
+
+.segundoDiv { 
+    grid-area: 1 / 3 / 3 / 6;
+    background-color: white; 
+    font-weight: 800;
+    height: 180px;    
+}
+
+.tercerDiv { 
+    grid-area: 3 / 3 / 5 / 6; 
+    background-color: white;
+    color: black; 
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+}
+
+.titulodiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.btnnuno{
+border-radius: 50px;
+width: 20px;
+height: 20px;
+background-color: red;
+margin: 5px;
+    }
+
+.btnndos{
+        border-radius: 50px;
+        width: 20px;
+        height: 20px;
+        background-color: wheat;
+        margin: 5px;
+            }
+.btnntres{
+    border-radius: 50px;
+        width: 20px;
+        height: 20px;
+        background-color: black;
+        margin: 5px;
+}
+
+.btncuatro{
+    border-radius: 50px;
+        width: 20px;
+        height: 20px;
+        background-color: rgb(127, 205, 224);
+        margin: 5px;
+}
+.btnncinco{
+    border-radius: 50px;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(61, 173, 140);
+    margin: 5px;
+}
+
+.botoness{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.Medidas{
+    padding-left: 20px;
+}
+.especificaciones{
+    font-weight: 500;
+}
+
+.Titulo{
+    font-weight: 700;
+    color: green;
+}
+.divisor{
+    color: transparent;
+}
+.precioo{
+    font-size: 20px;
+    padding: 10px 0 10px 0px;
+}
+.productoo{
+    font-size: 20px;
+    padding: 10px 0  0px;
+}
+.carritobtn{
+    margin-top: 10px;
+}
+.botoncontainer{
+    display: flex;
+    justify-content: center;
+}
+.primersvg{
+color: black;
+}
+.lista{
+    list-style: none;
+
+}
+.itemlist{
+    display: flex;
+    align-items: center;
+}

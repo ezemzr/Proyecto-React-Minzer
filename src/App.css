@@ -1,0 +1,111 @@
+*{
+    margin: 0px;
+    padding: 0px;
+  }
+  .navbar{
+    height: 100px;
+    background-color:black;
+    display: flex;
+    justify-content: space-between;
+  }
+  .divImg{
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px;
+  }
+  .logoapple{
+    height: 35px;
+    width: 35px;
+  }
+  .divLinkss{
+    display: flex;
+    align-items: center;
+    
+  }
+  .divLinks{
+    display: flex;
+    gap: 15px;
+  }
+  .itemLink{
+    text-decoration: none;
+    list-style-type: none;
+  }
+  .Carrito{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 100px;
+    justify-content: space-between;
+  
+  }
+  
+  .headerr{
+    width: 100%;
+  
+  }
+  svg{
+    color: white;
+  height: 30px;
+    width: 30px;
+  }
+  
+  .greeting{
+    color: red;
+  }
+
+  
+  .HomePage{
+    display: grid;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 45px ;
+    margin: 30px;
+    aspect-ratio: 3/3;
+    object-fit: contain;
+    background-color: black;
+  }
+  .HomePage :nth-child(4) {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .nasheeee{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr  ;
+    align-items: center;
+    justify-content: center;
+    gap: 20px ;
+    margin: 80px;
+    max-height: 400px;
+  }
+.nasheeee img{
+  max-height: 200px;
+  object-fit: contain;
+}
+  .InsideHome{
+    height: 390px;
+    width: 350px;
+  }
+
+  
+  .chakra-card__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .chakra-heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.ItemDetail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
