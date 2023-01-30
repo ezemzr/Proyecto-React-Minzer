@@ -1,38 +1,19 @@
-import React,{useEffect,useState} from 'react'
+import React,{useEffect,useState,useContext} from 'react'
 import { useParams } from 'react-router-dom';
 import ItemList from '../ItemList/ItemList';
-import { db } from '../../db/firebaseConfig';
-import { collection, query, getDocs } from "firebase/firestore";
-import firebase from 'firebase/app';
-import 'firebase/firestore';
+import { ItemsContext } from '../ItemsContext';
 
 
 ///EL COMPONENTE ITEM LIST CONTAINER ES COMO UN FILTRO DE PRODUCTOS PARA PASARLE A ITEM LIST 
 const ItemListContainer = ({}) => {
-    const [productos, setProductos] = useState([]);
+    const [items,setItems] = useContext(ItemsContext)
     const {CategoryId} = useParams()
-    const [iphone, setIphone] = useState([]);
-
-    const getPhones= async()=>{
-        const docs = [];
-        const iphones = await db.collection('iPhones').get();
-        const ipads = await db.collection('iPads').get();
-        const macbooks = await db.collection('MacBooks').get();
-        docs.push(...iphones.docs, ...ipads.docs, ...macbooks.docs);
-        setIphone(docs)
-        console.log(iphone);
-        }
-
-    useEffect(()=>{
-        getPhones();
-    },[])
-
 
 
 const getProductos = () =>{
 return new Promise((resolve, reject)=>{
             setTimeout(()=>{
-                resolve(iphone)
+                resolve(items)
             },2000)
         })
     }
@@ -40,7 +21,7 @@ return new Promise((resolve, reject)=>{
     const getProductosByCategory = (CategoryId)=>{
         return new Promise((resolve, reject)=>{
             setTimeout(() => {
-                resolve(iphone.filter(productooo => productooo.Category === CategoryId))
+                resolve(items.filter(productooo => productooo.Category === CategoryId))
             }, 2000);
         })
     }
@@ -48,12 +29,12 @@ return new Promise((resolve, reject)=>{
 useEffect(() => {
     if(!CategoryId){
         getProductos()
-        .then(productos=>{
-            setProductos(productos)
+        .then(items=>{
+            setItems(items)
             })
     }else {
-        getProductosByCategory(CategoryId).then(productos =>{
-            setProductos(productos)
+        getProductosByCategory(CategoryId).then(item =>{
+            setItems(item)
         })
     }
 
@@ -61,7 +42,7 @@ useEffect(() => {
 
     return (
     <div className='nashe'>
-        {<ItemList className='nashe' productoss={productos}/>}
+        {<ItemList className='nashe' itemss={items}/>}
     </div>
     )
 }
