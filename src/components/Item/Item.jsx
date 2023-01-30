@@ -2,15 +2,15 @@ import React from 'react'
 import { Card, Image,Stack, CardBody, CardFooter,Heading,Text,Divider,Button,ButtonGroup } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'; 
 
-// YA RECIBIENDO LOS PRODUCTOS DE ITEMLISTCONTAINER Y RECIBO ACADA JUGADOR YA DESTRUCTURADO CON EL MAP DE ITEMLIST
+// YA RECIBIENDO LOS PRODUCTOS DE ITEMLISTCONTAINER Y RECIBO ACADA PROD. YA DESTRUCTURADO CON EL MAP DE ITEMLIST
 // Y EN ITEM YO MANEJO LAS PROPIEDADES COMO ME CONVENGAN, CREANDO UNA PLANTILLA DE PRODUCTO
-const Item = ({id,Nombre,Img,Precio,Lanzamiento,Category}) => {
+const Item = ({id,Nombre,img,Precio,Lanzamiento,Category}) => {
     return (
 <div>
     <Card className='chakra-card' maxW='md'>
         <CardBody>
                 <Image
-                src={Img}
+                src=""
                 borderRadius='lg'
                 maxHeight={"250px"}
                 />

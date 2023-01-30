@@ -6,11 +6,14 @@ import imagen3  from "../HomePage/img/wacth.jfif"
 import imagen4 from "../HomePage/img/mac.jfif"
 import "../../App.css"
 import { Link } from 'react-router-dom'
+import Header from '../Header/Header'
 
 const Home = () => {
   return (
-    
-    <div className='HomePage'>
+    <div>
+    <Header></Header>
+      <div className='HomePage'>
+    {/* <Header></Header> */}
     <Link to={'/Category/Iphone'}>
       <Homepage Title={"iPhone"} subtitle={"Big and Bigger"} img={imagen1}/>
     </Link>
@@ -28,6 +31,8 @@ const Home = () => {
     
 
     </div>
+    </div>
+    
   )
 }
 

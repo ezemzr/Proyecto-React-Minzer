@@ -1,3 +1,27 @@
 .headerr{
+    height: 700px;
+    display: flex;
+    background-color: black;
+    flex-direction: column-reverse;
+}
+.divimg{
     height: 550px;
+    display: flex;
+    justify-content: center;
+}
+.divtit{
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.title {
+    font-size: 60px;
+    color: white;
+    font-weight: 540;
+    padding-bottom: 20px;
+}
+Button{
+    font-size: 20px;
 }

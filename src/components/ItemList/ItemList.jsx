@@ -3,10 +3,10 @@ import Item from '../Item/Item'
 
 
 // EL COMPONENTE ITEM LIST ES PARA GENERAR EL MAP Y PASARSELO A ITEM 
-const ItemList = ({productos}) => {
+const ItemList = ({productoss}) => {
     return (
     <div className='nasheeee'>
-        {productos.map(producto =>
+        {productoss.map(producto =>
         <Item  key={producto.id}{...producto}/>
         )}
     </div>

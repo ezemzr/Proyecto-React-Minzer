@@ -4,22 +4,14 @@ import ItemDetail from "../ItemDetail/ItemDetail"
 import { ProductosApple } from '../DataList/async-mock';
 
 
-function ItemDetailContainer({greeting}) {
+function ItemDetailContainer() {
     const [productos, setProductos] = useState([]);
     const { productoId } = useParams();
-
-    const getProductos = () =>{
-      return new Promise((resolve, reject)=>{
-                  setTimeout(()=>{
-                      resolve(ProductosApple)
-                  },2000)
-              })
-          }
 
   const getProductosById = (productoId)=>{
     return new Promise((resolve, reject)=>{
         setTimeout(() => {
-            resolve(ProductosApple.find(producto => producto.id === parseInt(productoId) ))
+            resolve(ProductosApple.find(producto => producto.id.toString() === productoId ))
         }, 2000);
     })
 }
@@ -28,14 +20,9 @@ function ItemDetailContainer({greeting}) {
 useEffect(() => {
     
   if(!productoId){
-      getProductos().then(productos=>{
+    getProductosById().then(productos=>{
           setProductos(productos)
-      })
-  }else {
-    getProductosById(productoId).then(productos =>{
-          setProductos(productos)
-      })
-  }
+      })}
 }, [productoId]);
   return (
     <div className='ItemDetail' >
