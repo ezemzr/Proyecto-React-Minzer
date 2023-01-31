@@ -14,25 +14,20 @@ const Home = () => {
     <Header></Header>
       <div className='HomePage'>
     {/* <Header></Header> */}
-    <Link to={'/Category/Iphone'}>
-      <Homepage Title={"iPhone"} subtitle={"Big and Bigger"} img={imagen1}/>
-    </Link>
-    <Link to={'/Category/Ipad'}>
-      <Homepage Title={"iPad "} subtitle={"Big and Bigger"}img={imagen2}/>
-    </Link>
-    <Link >
-      <Homepage Title={"Watch"} subtitle={"Big and Bigger"}img={imagen3}/>
-    </Link>
-    <Link to={'/Category/MacBook'}>
-      <Homepage Title={"MacBook"} subtitle={"Big and Bigger"}img={imagen4}/>
-    </Link>
-    
-    
-    
-
+        <Link to={'/Category/Iphone'}>
+          <Homepage Title={"iPhone"} subtitle={"Big and Bigger"} img={imagen1}/>
+        </Link>
+        <Link to={'/Category/Ipad'}>
+          <Homepage Title={"iPad "} subtitle={"Big and Bigger"}img={imagen2}/>
+        </Link>
+        <Link >
+          <Homepage Title={"Watch"} subtitle={"Big and Bigger"}img={imagen3}/>
+        </Link>
+        <Link to={'/Category/MacBook'}>
+          <Homepage Title={"MacBook"} subtitle={"Big and Bigger"}img={imagen4}/>
+        </Link>
+      </div>
     </div>
-    </div>
-    
   )
 }
 

@@ -10,7 +10,7 @@ const Item = ({id,Nombre,img,Precio,Lanzamiento,Category}) => {
     <Card className='chakra-card' maxW='md'>
         <CardBody>
                 <Image
-                src=""
+                src={img}
                 borderRadius='lg'
                 maxHeight={"250px"}
                 />
@@ -18,6 +18,7 @@ const Item = ({id,Nombre,img,Precio,Lanzamiento,Category}) => {
                 <Heading size='xl'>{Nombre}</Heading>
                 <Text>
                     Lanzamiento: {Lanzamiento}
+                    Categoria: {Category}
                 </Text>
                 <Text color='blue.600' fontSize='2xl'>
                     Precio: ${Precio}
@@ -27,7 +28,7 @@ const Item = ({id,Nombre,img,Precio,Lanzamiento,Category}) => {
         <Divider />
             <CardFooter>
                 <ButtonGroup spacing='2'>
-                    <Link to={`/detail/${id}`}>
+                    <Link to={`/detail/${id}`.toString()}>
                         <Button variant='solid' colorScheme='blue'>Ver detalles</Button>
                     </Link>
                     <Button variant='solid' colorScheme='blue'>Agregar al Carrito</Button>

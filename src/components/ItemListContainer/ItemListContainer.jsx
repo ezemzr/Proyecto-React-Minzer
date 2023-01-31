@@ -1,40 +1,35 @@
-import React,{useEffect,useState,useContext} from 'react'
+import React,{useEffect,useState} from 'react'
 import { useParams } from 'react-router-dom';
 import ItemList from '../ItemList/ItemList';
-import { ItemsContext } from '../ItemsContext';
-
 
 ///EL COMPONENTE ITEM LIST CONTAINER ES COMO UN FILTRO DE PRODUCTOS PARA PASARLE A ITEM LIST 
-const ItemListContainer = ({}) => {
-    const [items,setItems] = useContext(ItemsContext)
+const ItemListContainer = ({stock}) => {
+    const [items,setItems] = useState([]);
     const {CategoryId} = useParams()
-
 
 const getProductos = () =>{
 return new Promise((resolve, reject)=>{
             setTimeout(()=>{
-                resolve(items)
+                resolve(stock)
             },2000)
         })
     }
-    
-    const getProductosByCategory = (CategoryId)=>{
+const getProductosByCategory = (CategoryId)=>{
         return new Promise((resolve, reject)=>{
             setTimeout(() => {
-                resolve(items.filter(productooo => productooo.Category === CategoryId))
+                resolve(stock.filter(productooo => productooo.Category === CategoryId))
             }, 2000);
         })
     }
-
 useEffect(() => {
     if(!CategoryId){
         getProductos()
-        .then(items=>{
-            setItems(items)
+        .then(itemm=>{
+            setItems(itemm)
             })
     }else {
-        getProductosByCategory(CategoryId).then(item =>{
-            setItems(item)
+        getProductosByCategory(CategoryId).then(itemm =>{
+            setItems(itemm)
         })
     }
 

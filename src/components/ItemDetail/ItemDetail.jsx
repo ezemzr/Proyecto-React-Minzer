@@ -8,20 +8,16 @@ import { CgSmartphoneRam } from 'react-icons/cg';
 
 
 
-const ItemDetail = ({productos}) => {
-
-
-
-
+const ItemDetail = ({itemsss}) => {
   return (
     <div className='container'>
       <div className='primerDiv'>      
-        <img className='imagenDetalle' alt='ProductoApple' src={productos.Img}></img>
+        <img className='imagenDetalle' alt='ProductoApple' src={itemsss.img}></img>
       </div>
       <Divider className='divisor' orientation='horizontal' />      
       <div className='segundoDiv'>
-        <h1 className='productoo'>{productos.Nombre}</h1>
-        <h3 className='precioo'>${productos.Precio}</h3>
+        <h1 className='productoo'>{itemsss.Nombre}</h1>
+        <h3 className='precioo'>${itemsss.Precio}</h3>
           <button type="button" className='btnnuno'></button>
           <button type="button" className='btnndos'></button>
           <button type="button" className='btnntres'></button>
@@ -49,18 +45,18 @@ const ItemDetail = ({productos}) => {
         </div>
         <div>
           <ul className='lista'>
-            <li className='itemlist'>Launch: {productos.Lanzamiento}</li>
+            <li className='itemlist'>Launch: {itemsss.Lanzamiento}</li>
             <li className='itemlist'>                    
-              <GiSmartphone className="primersvg text-black text-4xl mb-5 mr-1 sm:mr-2"/>{productos.Pantalla}
+              <GiSmartphone className="primersvg text-black text-4xl mb-5 mr-1 sm:mr-2"/>{itemsss.Pantalla}
             </li>
             <li className='itemlist'>                     
               <CgSmartphoneRam className=" primersvg text-black text-4xl mb-5 mr-2"/> 
-              {productos.Chip}
+              {itemsss.Chip}
             </li>
             <li className='itemlist'>                                  <RiCameraLensLine className="primersvg text-black text-4xl mb-5 mr-1 sm:mr-2"/>
-                {productos.Camara}
+                {itemsss.Camara}
               </li>
-            {/* <li  className='itemlist'><TbDimensions className="primersvg text-black text-4xl mb-5 mr-1 sm:mr-2"/>{productos.Medidas.Alto} x {productos.Medidas.Ancho} x {productos.Medidas.Peso}gr</li> */}
+            {/* <li  className='itemlist'><TbDimensions className="primersvg text-black text-4xl mb-5 mr-1 sm:mr-2"/>{itemsss.Medidas.Alto} x {itemsss.Medidas.Ancho} x {itemsss.Medidas.Peso}gr</li> */}
           </ul>
         </div>
           <WrapItem className='botoncontainer'>

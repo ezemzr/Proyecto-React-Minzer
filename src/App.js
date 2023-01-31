@@ -7,24 +7,34 @@ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCont
 import { Route,Routes,BrowserRouter } from 'react-router-dom';
 //RUTAS
 import Home from "./components/HomePage/Home"
-import { ItemsProvider } from './components/ItemsContext';
-
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from './db/firebaseConfig';
 
 
 function App(){
+
+  const [items, setItems] = useState([]);
+    const itemsProducts = collection(db,"productos")
+
+    const getItems= async ()=>{
+        const querySnapshot = await getDocs(itemsProducts);
+        const docs = querySnapshot.docs.map((doc) => ({id:doc.id, ...doc.data()}));
+        setItems(docs)
+        }
+
+    useEffect(() => {
+    getItems()
+    }, []);
     return(
-      <ItemsProvider>
         <BrowserRouter>
         <NavBar></NavBar>
           <Routes>
             <Route exact path='/' element={<Home/>}/>
-            <Route exact path='/productos' element={<ItemListContainer/>}/>
-            <Route exact path='/Category/:CategoryId' element={<ItemListContainer/>}/>
-            <Route exact path='/detail/:productoId' element={<ItemDetailContainer/>}/>
+            <Route exact path='/productos' element={<ItemListContainer stock={items}/>}/>
+            <Route exact path='/Category/:CategoryId' element={<ItemListContainer stock={items}/>}/>
+            <Route exact path='/detail/:productoId' element={<ItemDetailContainer stockazo={items}/>}/>
           </Routes>
       </BrowserRouter>
-      </ItemsProvider>
-      
     )
   }
 
