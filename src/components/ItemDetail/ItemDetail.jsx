@@ -1,23 +1,42 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import "./ItemDetail.css"
 import { Button,WrapItem,Divider } from '@chakra-ui/react'
 import { GiSmartphone  } from 'react-icons/gi';
 import { RiCameraLensLine } from 'react-icons/ri';
 import { TbDimensions  } from 'react-icons/tb';
 import { CgSmartphoneRam } from 'react-icons/cg';
+import { useParams } from 'react-router-dom';
+import { doc,getDoc } from 'firebase/firestore';
+import { db } from '../../db/firebaseConfig';
 
 
+const ItemDetail = () => {
+  const [item,setItem] = useState({});
+  const { productoId } = useParams();
 
-const ItemDetail = ({itemsss}) => {
+
+  const getItem = async () => {
+    const itemDocRef = doc(db, "productos", productoId);
+    const itemDoc = await getDoc(itemDocRef)
+    if(itemDoc.exists()){
+      setItem(itemDoc.data()) 
+    }else{
+      return null
+    }
+  }
+  useEffect(() => {
+    getItem(productoId)
+  }, [productoId]);
+  
   return (
     <div className='container'>
       <div className='primerDiv'>      
-        <img className='imagenDetalle' alt='ProductoApple' src={itemsss.img}></img>
+        <img className='imagenDetalle' alt='ProductoApple' src={item.img}></img>
       </div>
       <Divider className='divisor' orientation='horizontal' />      
       <div className='segundoDiv'>
-        <h1 className='productoo'>{itemsss.Nombre}</h1>
-        <h3 className='precioo'>${itemsss.Precio}</h3>
+        <h1 className='productoo'>{item.Nombre}</h1>
+        <h3 className='precioo'>${item.Precio}</h3>
           <button type="button" className='btnnuno'></button>
           <button type="button" className='btnndos'></button>
           <button type="button" className='btnntres'></button>
@@ -45,18 +64,18 @@ const ItemDetail = ({itemsss}) => {
         </div>
         <div>
           <ul className='lista'>
-            <li className='itemlist'>Launch: {itemsss.Lanzamiento}</li>
+            <li className='itemlist'>Launch: {item.Lanzamiento}</li>
             <li className='itemlist'>                    
-              <GiSmartphone className="primersvg text-black text-4xl mb-5 mr-1 sm:mr-2"/>{itemsss.Pantalla}
+              <GiSmartphone className="primersvg text-black text-4xl mb-5 mr-1 sm:mr-2"/>{item.Pantalla}
             </li>
             <li className='itemlist'>                     
               <CgSmartphoneRam className=" primersvg text-black text-4xl mb-5 mr-2"/> 
-              {itemsss.Chip}
+              {item.Chip}
             </li>
             <li className='itemlist'>                                  <RiCameraLensLine className="primersvg text-black text-4xl mb-5 mr-1 sm:mr-2"/>
-                {itemsss.Camara}
+                {item.Camara}
               </li>
-            {/* <li  className='itemlist'><TbDimensions className="primersvg text-black text-4xl mb-5 mr-1 sm:mr-2"/>{itemsss.Medidas.Alto} x {itemsss.Medidas.Ancho} x {itemsss.Medidas.Peso}gr</li> */}
+            {/* <li  className='itemlist'><TbDimensions className="primersvg text-black text-4xl mb-5 mr-1 sm:mr-2"/>{item.Medidas.Alto} x {item.Medidas.Ancho} x {item.Medidas.Peso}gr</li> */}
           </ul>
         </div>
           <WrapItem className='botoncontainer'>

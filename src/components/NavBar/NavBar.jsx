@@ -1,14 +1,17 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import "./navbar.css";
 import { Button  } from '@chakra-ui/react'
 import CartWidget from '../CartWidget/CartWidget';
 import { Link } from 'react-router-dom';
 import { BsApple } from "react-icons/bs";
-
+import { CartContext } from '../Context/CartContext';
 
 const NavBar = () => {
+    const [cart, setCart] =  useContext(CartContext);
+    const quantity = cart.reduce((acc,curr)=>{
+        return acc + curr.quantity
+    },0)
 
-    
     return (
     <div className='navbar'>
         <div className="divImg">
@@ -44,7 +47,10 @@ const NavBar = () => {
                 </Link>
             </ul>
         </div>
-        <CartWidget></CartWidget>
+        <Link to={"/cart"}>
+            <CartWidget quantity={quantity}/>
+        </Link>
+        
     </div>    
 )
 }
