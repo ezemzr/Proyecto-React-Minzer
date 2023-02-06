@@ -1,0 +1,11 @@
+.contadorrr{
+    color: white;
+}
+  .Carrito{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 100px;
+    justify-content: space-between;
+  
+  }

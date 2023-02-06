@@ -3,14 +3,14 @@ import React,{useContext,useState} from 'react'
 import { Link } from 'react-router-dom';
 import { db } from '../../db/firebaseConfig';
 import { CartContext } from '../Context/CartContext';
-import CheckOut from "../CheckOut/CheckOut"
-import Item from "../Item/Item"
 import "./Cart.css"
 
 const Cart = () => {
   const [cart, setCart] =  useContext(CartContext);
   const [idcompra, setIdcompra] = useState([]);
-    const quantity = cart.reduce((acc,curr)=>{
+  const [finalizada, setFinalizada] = useState(false);
+    
+  const quantity = cart.reduce((acc,curr)=>{
         return acc + curr.quantity
     },0)
 
@@ -28,12 +28,22 @@ const Cart = () => {
             total:`${PrecioTotal}`
         }
 
-        const handleClick = () => {
-             const ordersCollection = collection(db, "orders")
-             addDoc(ordersCollection,Orden)
+        const handleClick = async() => {
+              const ordersCollection = collection(db, "orders")
+              await addDoc(ordersCollection,Orden)
              .then(({id}) => setIdcompra(id),
+             setFinalizada(true),
              console.log(idcompra))
         }
+        
+          if (finalizada) {
+            return(
+        <div className='check'>
+          <div class="card">
+            <p>id de la compra:{idcompra} </p>
+          </div>
+        </div>
+        )} 
 
       if(cart.length > 0){
         return( 
@@ -42,19 +52,13 @@ const Cart = () => {
               <h2>Total : ${PrecioTotal}</h2>
                 <button className='btn' onClick={() =>{handleClick()}}>
                   Finalizar compra
-                </button>
-              <Link to={"/checkout"}>
-                <button className='btn' onClick={<CheckOut idcompra={idcompra}{...cart}></CheckOut> }>
-                  Ver Productos   
-              </button>
-              </Link>
-              
+                </button>  
         </div>
           )
     }else{
       return (
     <div className='CarroVacio'>
-      <p>Carrito vacio...</p>
+      <p className=''>Carrito vacio...</p>
       <Link to={"/productos"}>
         <button class="cta">
             <span class="hover-underline-animation"> Shop now </span>

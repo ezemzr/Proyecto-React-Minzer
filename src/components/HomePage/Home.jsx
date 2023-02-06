@@ -1,31 +1,30 @@
 import React from 'react'
-import Homepage from './Homepage'
-import imagen1 from  "../HomePage/img/descarga.jfif"
-import imagen2 from "../HomePage/img/ipad.jpg"
-import imagen3  from "../HomePage/img/wacth.jfif"
-import imagen4 from "../HomePage/img/mac.jfif"
-import "../../App.css"
+import "./home.css"
 import { Link } from 'react-router-dom'
-import Header from '../Header/Header'
+import Header from '../../components/Header/Header'
 
 const Home = () => {
   return (
-    <div>
+    <div className='inicio'>
     <Header></Header>
       <div className='HomePage'>
-    {/* <Header></Header> */}
-        <Link to={'/Category/Iphone'}>
-          <Homepage Title={"iPhone"} subtitle={"Big and Bigger"} img={imagen1}/>
-        </Link>
-        <Link to={'/Category/Ipad'}>
-          <Homepage Title={"iPad "} subtitle={"Big and Bigger"}img={imagen2}/>
-        </Link>
-        <Link >
-          <Homepage Title={"Watch"} subtitle={"Big and Bigger"}img={imagen3}/>
-        </Link>
-        <Link to={'/Category/MacBook'}>
-          <Homepage Title={"MacBook"} subtitle={"Big and Bigger"}img={imagen4}/>
-        </Link>
+          <Link to={'/Category/Iphone'}>
+            <div className='ipone'></div>
+          </Link>
+          <Link to={'/Category/Ipad'}>
+            <div className='ipaad'></div>
+          </Link>
+        
+          <Link to={'/Category/MacBook'}>
+          <div className='maccc'></div>
+          </Link>
+          <Link to={'/watch'}>
+          <div className='watchhh'>  </div>
+          </Link>
+      
+        
+        
+        
       </div>
     </div>
   )

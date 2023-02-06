@@ -2,6 +2,7 @@ import Spinner from "../Spinner/Spinner"
 import React,{useEffect,useState} from 'react'
 import { useParams } from 'react-router-dom';
 import ItemList from '../ItemList/ItemList';
+import "./itemlist.css"
 ///EL COMPONENTE ITEM LIST CONTAINER ES COMO UN FILTRO DE PRODUCTOS PARA PASARLE A ITEM LIST 
 const ItemListContainer = ({stock,getItem}) => {
     const [items,setItems] = useState([]);
@@ -38,15 +39,14 @@ useEffect(() => {
 }, [CategoryId]);
 
     return (
-        <>
-        {loading && <h2>Loading ...</h2>}
+        <div className="iphonesss">
         {loading ? (
-            <Spinner />) : 
+            <Spinner className="spiner" />) : 
             <div className='nashe'>
-                {<ItemList className='nashe' items={items} getItem={getItem}/>}
+                {<ItemList items={items} getItem={getItem}/>}
             </div>
         }
-        </>
+        </div>
     )
 }
 

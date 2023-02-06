@@ -1,7 +1,7 @@
 import React from 'react'
 import { Avatar, WrapItem } from '@chakra-ui/react'
 import { BsFillCartFill  } from "react-icons/bs";
-
+import "./CartWidget.css"
 const CartWidget = ({quantity}) => {
 
 

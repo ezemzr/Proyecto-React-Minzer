@@ -1,0 +1,27 @@
+.iphonesss{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1200px;
+    background-color:#495B71
+    ;
+}
+.spiner{
+    align-self: center;
+}
+.nasheeee{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr  ;
+    align-items: center;
+    justify-content: center;
+    gap: 20px ;
+    margin: 80px;
+    max-height: 1000px;
+  }
+
+  .chakra-card.css-14skwda{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+  }

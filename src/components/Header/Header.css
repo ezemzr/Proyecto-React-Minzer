@@ -1,5 +1,6 @@
 .headerr{
     height: 700px;
+    width: 100%;
     display: flex;
     background-color: black;
     flex-direction: column-reverse;

@@ -1,0 +1,77 @@
+
+.HomePage{
+    display: grid;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 45px ;
+    background-color: #C0C7CF ;
+    justify-items: center;
+  }
+  .ipone{
+    margin: 30px;
+    height: 300px;
+    width: 300px;  
+    border-radius: 10px;
+    background-image: url("./images/Mi\ proyecto\ \(4\).png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    transition: 3s;
+  }
+  .ipone:hover{
+    height: 400px;
+    width: 400px;
+  }
+  .ipaad{
+    margin: 30px;
+    height: 300px;
+    width: 300px;  
+    border-radius: 10px;
+    background-image: url("./images/ipad\ air\ 5.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    transition: 3s;
+  }
+  .ipaad:hover{
+    height: 400px;
+    width: 400px;
+  }
+  .maccc{
+    margin: 30px;
+    height: 300px;
+    width: 300px;  
+    border-radius: 10px;
+    background-image: url("./images/imac\ p´ro.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    transition: 3s;
+  }
+  .maccc:hover{
+    height: 400px;
+    width: 400px;
+  }
+  .watchhh{
+    margin: 30px;
+    height: 300px;
+    width: 300px;  
+    border-radius: 10px;
+    background-image: url("./images/Mi\ proyecto\ \(5\).png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    transition: 3s;
+  }
+  .watchhh:hover{
+    height: 400px;
+    width: 400px;
+  }

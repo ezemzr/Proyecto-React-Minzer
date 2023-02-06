@@ -1,0 +1,31 @@
+.navbar{
+    height: 100px;
+    background-color:black;
+    display: flex;
+    justify-content: space-between;
+  }
+.divImg{
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px;
+  }
+  
+  .logoapple{
+    height: 35px;
+    width: 35px;
+  }
+  .divLinkss{
+    display: flex;
+    align-items: center;
+    
+  }
+  .divLinks{
+    display: flex;
+    gap: 15px;
+  }
+  .itemLink{
+    text-decoration: none;
+    list-style-type: none;
+  }

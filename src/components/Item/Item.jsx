@@ -8,6 +8,13 @@ import { CartContext } from '../Context/CartContext';
 const Item = ({id,Nombre,img,Precio,Lanzamiento,Category}) => {
     const [cart, setCart]  = useContext(CartContext);
     
+    const quantity = cart.reduce((acc,curr)=>{
+        return acc + curr.quantity
+    },0)
+
+    const PrecioTotal = cart.reduce(
+      (acc, curr)=> acc + curr.quantity * curr.Precio,0)
+
     const addToCart = ()=>{
         setCart((currItems)=>{
             const isItemsFound =  currItems.find((item)=> item.id === id)
@@ -43,51 +50,50 @@ const Item = ({id,Nombre,img,Precio,Lanzamiento,Category}) => {
     const getQuantitiById = (id) => { 
         return cart.find((item) => item.id === id)?.quantity  || 0
      }
-
         const quantityPorItem = getQuantitiById(id)
 
 
-    return (
-<div>
-    <Card className='chakra-card' maxW='md'>
+return (
+    <Card maxW='sm'>
         <CardBody>
                 <Image
-                src={img}
-                borderRadius='lg'
-                maxHeight={"250px"}
-                />
-            <Stack mt='6' spacing='3'>
-                <Heading size='xl'>{Nombre}</Heading>
+                    src={img}
+                    boxSize='250px'
+                    alt='Si lees esto es porque no le pase bien la prop jeje'
+                    borderRadius='lg'
+                    objectFit={"contain"}
+                    />
+                <Stack mt='6' spacing='3'>
+                <Heading size='md'>{Nombre}</Heading>
                 <Text>
-                    Lanzamiento: {Lanzamiento}
-                    Categoria: {Category}
+                    Category: {Category}
                 </Text>
                 <Text color='blue.600' fontSize='2xl'>
-                    Precio: ${Precio}
+                    ${Precio}
                 </Text>
-            </Stack>
+                </Stack>
         </CardBody>
-        <Divider />
-            <CardFooter>
-                <ButtonGroup spacing='3'>
-                    <Link to={`/detail/${id}`}>
-                        <Button variant='solid' colorScheme='blue'>Ver detalles</Button>
-                    </Link>
-                    {
-                        quantityPorItem === 0 ?(
-                        <Button variant='solid' colorScheme='blue' onClick={()=> addToCart()}>Agregar al Carrito</Button>
-                    ): (
-                        <Button variant='solid' colorScheme='blue' onClick={()=> addToCart()}>Agregar más</Button>
-                    )}
-                    {
-                        quantityPorItem > 0 &&(
-                        <Button variant='solid' colorScheme='blue' onClick={()=> removeItem(id)}>Restar</Button>
-                    )
-                    }
-                    </ButtonGroup>
-            </CardFooter>
+            <Divider />
+        <CardFooter>
+            <ButtonGroup spacing='1'>
+                <Link to={`/detail/${id}`}>
+                    <Button variant='solid' colorScheme='blue'>Ver detalles</Button>
+                </Link>
+            {
+                    quantityPorItem === 0 ?(
+                    <Button variant='solid' colorScheme='whatsapp' onClick={()=> addToCart()}>Agregar al Carrito</Button>
+            ): (
+                    <Button variant='solid' colorScheme='teal' onClick={()=> addToCart()}>Agregar más</Button>
+            )}
+            {
+                    quantityPorItem > 0 &&(
+                    <Button variant='solid' colorScheme='red' onClick={()=> removeItem(id)}>Restar</Button>
+            )
+            }
+            </ButtonGroup>
+        </CardFooter>
     </Card>
-</div>
+
 )
 }
 
