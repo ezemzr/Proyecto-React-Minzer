@@ -1,23 +1,29 @@
 import { addDoc, collection } from 'firebase/firestore';
-import React,{useContext,useState} from 'react'
+import React,{useContext,useEffect,useState} from 'react'
 import { Link } from 'react-router-dom';
 import { db } from '../../db/firebaseConfig';
 import { CartContext } from '../Context/CartContext';
 import "./Cart.css"
+import { doc,getDoc } from 'firebase/firestore';
+import {Accordion,AccordionItem,AccordionButton,AccordionPanel,AccordionIcon,} from '@chakra-ui/react'
+
+
 
 const Cart = () => {
   const [cart, setCart] =  useContext(CartContext);
   const [idcompra, setIdcompra] = useState([]);
   const [finalizada, setFinalizada] = useState(false);
+  const [order, setOrder] = useState([]);
     
+
   const quantity = cart.reduce((acc,curr)=>{
         return acc + curr.quantity
     },0)
 
-    const PrecioTotal = cart.reduce(
-      (acc, curr)=> acc + curr.quantity * curr.Precio,0)
+  const PrecioTotal = cart.reduce(
+    (acc, curr)=> acc + curr.quantity * curr.Precio,0)
 
-        const Orden = {
+  const Orden = {
           Cliente:{
             Nombre: "Ezequiel",
             email: "ezequielminzer@gmail.com",
@@ -26,37 +32,70 @@ const Cart = () => {
           },
             items:cart.map(product => ({id: product.id, nombre: product.Nombre, Precio: product.Precio, quantity: product.quantity})) ,
             total:`${PrecioTotal}`
+    }
+    const handleClick = async() => {
+      const ordersCollection = collection(db, "orders")
+      await addDoc(ordersCollection,Orden)
+      .then(({id}) => setIdcompra(id),
+      setFinalizada(true))
         }
-
-        const handleClick = async() => {
-              const ordersCollection = collection(db, "orders")
-              await addDoc(ordersCollection,Orden)
-             .then(({id}) => setIdcompra(id),
-             setFinalizada(true),
-             console.log(idcompra))
-        }
-        
-          if (finalizada) {
-            return(
-        <div className='check'>
-          <div class="card">
-            <p>id de la compra:{idcompra} </p>
-          </div>
+    const getOrder = async () => {
+      const itemDocRef = doc(db, "orders", idcompra);
+       const itemDoc = await getDoc(itemDocRef)
+       if(itemDoc.exists()){
+        setOrder(itemDoc.data()) 
+        console.log(order);
+       }else{
+         return null
+       }
+     }
+     useEffect(() => {
+       getOrder()
+     }, [idcompra])
+     
+    if (finalizada) {
+      return(
+      <div className='check'>
+        <div class="card">
+          <h1>COMPRA FINALIZADA!</h1>
+          <p>ID de la compra:{idcompra} </p>
+          <p>Total:${order.total}</p>
+          <h3>DATOS:</h3>
+          <h4>Nombre: {order.Cliente.Nombre}</h4>
+          <h4>Telefono: {order.Cliente.Telefono}</h4>
+          <h4>email: {order.Cliente.email}</h4>
+          <h4>Direccion: {order.Cliente.Direccion}</h4>
         </div>
-        )} 
-
-      if(cart.length > 0){
-        return( 
-        <div className='carroNoVacio'>
-            <h1>Items in cart:{quantity}</h1>
-              <h2>Total : ${PrecioTotal}</h2>
+      </div>
+)}
+  
+     if(cart.length  > 0){
+      return (
+    <div className='carroNoVacio'>
+    <div className='carritoo'>
+      <h1>Carrito</h1>
+          <h2>Items en carrito:{quantity}</h2>
+              <h3>Total :${PrecioTotal}</h3>
+              <div className='compras'>
+                <h3>Usted Compro:</h3>
+                  {cart.map((prodd) =>{
+                  return( 
+                  <ul className='conteitem' key={prodd.id}{...prodd}>
+                    <li className='itemproducto'>Nombre: <h4> {prodd.Nombre}</h4> </li>
+                    <li className='itemproducto'>Precio: <h4>${prodd.Precio}</h4></li>
+                    <li className='itemproducto'>Cantidad:<h4>{prodd.quantity}</h4> </li>
+                  </ul>)
+                  })}
+                </div>
                 <button className='btn' onClick={() =>{handleClick()}}>
                   Finalizar compra
-                </button>  
-        </div>
-          )
-    }else{
-      return (
+                </button> 
+    </div>
+          
+      </div>
+      )
+  } 
+return(  
     <div className='CarroVacio'>
       <p className=''>Carrito vacio...</p>
       <Link to={"/productos"}>
@@ -67,12 +106,10 @@ const Cart = () => {
             </svg>
         </button>
       </Link>
-      
-      
     </div>
-  );
-    }
   
-};
-
+)
+ 
+}
+  
 export default Cart;
