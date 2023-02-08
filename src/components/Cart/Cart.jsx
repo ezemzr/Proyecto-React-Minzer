@@ -61,10 +61,10 @@ const Cart = () => {
           <p>ID de la compra:{idcompra} </p>
           <p>Total:${order.total}</p>
           <h3>DATOS:</h3>
-          <h4>Nombre: {order.Cliente.Nombre}</h4>
-          <h4>Telefono: {order.Cliente.Telefono}</h4>
+          {/* <h4>Nombre: {order.Cliente.Nombre}</h4> */}
+          {/* <h4>Telefono: {order.Cliente.Telefono}</h4>
           <h4>email: {order.Cliente.email}</h4>
-          <h4>Direccion: {order.Cliente.Direccion}</h4>
+          <h4>Direccion: {order.Cliente.Direccion}</h4> */}
         </div>
       </div>
 )}
